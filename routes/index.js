@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET Userlist page. */
+/* GET alltitles page. */
 router.get('/alltitles', function(req, res) {
     var db = req.db;
     var collection = db.get('mediatheque'); //notre collection est mediatheque
