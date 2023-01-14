@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Liste des titres de rang 1 à 10</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Liste des titres</h1>
+<ul>
+    <%
+    var list = '';
+    for (i = 0; i < lettertitles.length; i++) {
+        var title = lettertitles[i].fields['titre_avec_lien_vers_le_catalogue'];
+        var  letter = 'N';
+        if (title.charAt(0) == letter){ 
+            list += '<li>' + title + '</li>';
+        }
+        else {
+            list += '';
+        }
+    }
+    %>
+    <%- list %>
+</ul>
+</body>
+</html>
