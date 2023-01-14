@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Question 4</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Liste des types des documents</h1>
+<ul>
+    <%
+        var typedoc =[];
+        var list = '';
+
+        //Pour récupérer tous les types des documents qu'on a
+        for (i = 0; i < titles4categ.length; i++) {
+            var title = titles4categ[i].fields['type_de_document'];
+            typedoc.push(title);
+        }
+
+        //Pour supprimer les doublons
+        var unique = typedoc.filter((x, i) => typedoc.indexOf(x) == i);
+        typedoc.forEach(element => {
+            if (!unique.includes(element)){
+                unique.push(element);
+            }
+        })
+
+        // pour afficher la nouvelle liste sous forme d'une liste html
+        for (i = 0; i < unique.length; i++) {
+            list += '<li>' + unique[i] + '</li>';
+        }
+    %>
+    <%- list %>
+</ul>
+</body>
+</html>

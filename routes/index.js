@@ -39,6 +39,17 @@ router.get('/titles2categ', function(req, res) {
     });
 });
 
+/* GET Ranked movies page. */
+router.get('/lettertitles', function(req, res) {
+    var db = req.db;
+    var collection = db.get('mediatheque'); //notre collection est mediatheque
+    collection.find({},{},function(e,docs){
+        res.render('lettertitles', {
+            "lettertitles" : docs
+        });
+    });
+});
+
 /* GET documents that don't have "type_de_document" field (page). */
 router.get('/titles3categ', function(req, res) {
     var db = req.db;
@@ -50,13 +61,13 @@ router.get('/titles3categ', function(req, res) {
     });
 });
 
-/* GET Ranked movies page. */
-router.get('/lettertitles', function(req, res) {
+/* GET document type page. */
+router.get('/titles4categ', function(req, res) {
     var db = req.db;
     var collection = db.get('mediatheque'); //notre collection est mediatheque
-    collection.find({},{},function(e,docs){
-        res.render('lettertitles', {
-            "lettertitles" : docs
+    collection.find({ 'fields.type_de_document': {$exists: true} },function(e,docs){
+        res.render('titles4categ', {
+            "titles4categ" : docs
         });
     });
 });
