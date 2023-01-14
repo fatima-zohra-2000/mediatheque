@@ -17,4 +17,15 @@ router.get('/alltitles', function(req, res) {
     });
 });
 
+/* GET titles with [1,10] range page. */
+router.get('/titles1categ', function(req, res) {
+    var db = req.db;
+    var collection = db.get('mediatheque'); //notre collection est mediatheque
+    collection.find({},{},function(e,docs){
+        res.render('titles1categ', {
+            "titles1categ" : docs
+        });
+    });
+});
+
 module.exports = router;
