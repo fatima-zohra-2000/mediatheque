@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Liste des rang 1 à 10</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<h1>Liste des auteurs les titres commançant par N</h1>
+<ul>
+    <%
+        var list = '';
+        for (i = 0; i < titles2categ.length; i++) {
+            var title = titles2categ[i].fields['titre_avec_lien_vers_le_catalogue'];
+            var firstletter = title.charAt(0);
+            var author = titles2categ[i].fields['auteur'];
+            if (firstletter == 'N'){ 
+                list += '<li>' + author + '</li>';
+            }
+            else {
+                list += '';
+            }
+        }
+    %>
+    <%- list %>
+</ul>
+</body>
+</html>

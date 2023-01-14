@@ -17,13 +17,24 @@ router.get('/alltitles', function(req, res) {
     });
 });
 
-/* GET titles with [1,10] range page. */
+/* GET titles with [1,10] range (page). */
 router.get('/titles1categ', function(req, res) {
     var db = req.db;
     var collection = db.get('mediatheque'); //notre collection est mediatheque
     collection.find({},{},function(e,docs){
         res.render('titles1categ', {
             "titles1categ" : docs
+        });
+    });
+});
+
+/* GET authors with titles starting with N (page). */
+router.get('/titles2categ', function(req, res) {
+    var db = req.db;
+    var collection = db.get('mediatheque'); //notre collection est mediatheque
+    collection.find({},{},function(e,docs){
+        res.render('titles2categ', {
+            "titles2categ" : docs
         });
     });
 });
