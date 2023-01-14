@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Liste des rang 1 à 10</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <h1>Liste des auteurs les titres commançant par N</h1>
+    <table border ="1">
+        <thead>
+            <td>N°</td>
+            <td>Titre</td>
+            <td>Auteur</td>
+            <td>Nombre de réservations</td>
+            <td>Nombre de rang</td>
+        </thead>
+        <%
+            var table = '';
+            var titre = '';
+            var nbreservation ;
+            var rang;
+            var auteur = '';
+            var conteur = 0;
+            
+            for (i = 0; i < titles3categ.length; i++) {
+
+                conteur += 1;
+                titre = titles3categ[i].fields['titre_avec_lien_vers_le_catalogue'];
+                nbreservation = titles3categ[i].fields['nombre_de_reservations'];
+                rang = titles3categ[i].fields['rang'];
+                auteur = titles3categ[i].fields['auteur'];
+
+                table += '<tr><td>' + conteur + '</td><td>' + titre + '</td><td>' + auteur + '</td><td>' + nbreservation + '</td><td>' + rang +'</td></tr>';
+            }
+        %>
+        <%- table %>
+    </table>
+</body>
+</html>

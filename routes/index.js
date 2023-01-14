@@ -39,4 +39,26 @@ router.get('/titles2categ', function(req, res) {
     });
 });
 
+/* GET authors with titles starting with N (page). */
+router.get('/titles2categ', function(req, res) {
+    var db = req.db;
+    var collection = db.get('mediatheque'); //notre collection est mediatheque
+    collection.find({},{},function(e,docs){
+        res.render('titles2categ', {
+            "titles2categ" : docs
+        });
+    });
+});
+
+/* GET documents that don't have "type_de_document" field (page). */
+router.get('/titles3categ', function(req, res) {
+    var db = req.db;
+    var collection = db.get('mediatheque'); //notre collection est mediatheque
+    collection.find({ 'fields.type_de_document': {$exists: false} },function(e,docs){
+        res.render('titles3categ', {
+            "titles3categ" : docs
+        });
+    });
+});
+
 module.exports = router;
