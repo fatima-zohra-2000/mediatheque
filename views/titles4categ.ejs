@@ -18,7 +18,6 @@
         }
 
         //Pour supprimer les doublons
-        var unique = typedoc.filter((x, i) => typedoc.indexOf(x) == i);
         typedoc.forEach(element => {
             if (!unique.includes(element)){
                 unique.push(element);
