@@ -39,4 +39,15 @@ router.get('/titles2categ', function(req, res) {
     });
 });
 
+/* GET Ranked movies page. */
+router.get('/lettertitles', function(req, res) {
+    var db = req.db;
+    var collection = db.get('mediatheque'); //notre collection est mediatheque
+    collection.find({},{},function(e,docs){
+        res.render('lettertitles', {
+            "lettertitles" : docs
+        });
+    });
+});
+
 module.exports = router;
