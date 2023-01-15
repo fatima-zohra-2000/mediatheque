@@ -10,8 +10,8 @@
     <%
         var typedoc =[];
         var list = '';
+        var unique =[];
 
-        //Pour récupérer tous les types des documents qu'on a
         for (i = 0; i < titles4categ.length; i++) {
             var title = titles4categ[i].fields['type_de_document'];
             typedoc.push(title);
