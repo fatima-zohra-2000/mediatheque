@@ -16,6 +16,8 @@
         <th>Emprunter</th>
     </thead>
     <%
+        var form ='';
+        var button ='';
         var table = '';
         var titre = '';
         var documentemprunte ;
@@ -27,10 +29,20 @@
             conteur += 1;
             titre = alltitles[i].fields['titre_avec_lien_vers_le_catalogue'];
             documentemprunte = alltitles[i].fields['document_emprunte'];
-            // btnemprunte = alltitles[i].fields['rang'];
             auteur = alltitles[i].fields['auteur'];
 
-            table += '<tr><td>' + conteur + '</td><td>' + titre + '</td><td>' + auteur + '</td><td>' + documentemprunte + '</td><td>' + '<button>Emprunter</button>' +'</td></tr>';
+            //La condition pour vérifier si le titre est emprunté ou pas
+            if(documentemprunte=='non'){
+                var buttonboel = false;
+                button ='Emprunter';
+            }else{
+                var buttonboel = true;
+                button ='Ramener';
+            }
+
+            form = '<form id="formEmprunte" name="emprunte" method="post" action="/emprunte"><button id="btnSubmit" type="submit" name="buttonValue" value="'+button+'">' + button + '</button></form>'
+            
+            table += '<tr><td>' + conteur + '</td><td>' + titre + '</td><td>' + auteur + '</td><td>' + documentemprunte + '</td><td>' + form +'</td></tr>';
         }
     %>
     <%- table %>
