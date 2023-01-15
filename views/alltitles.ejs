@@ -6,15 +6,34 @@
 </head>
 <body>
 <h1>Liste de tous les titres</h1>
-<ul>
+
+<table border ="1">
+    <thead>
+        <th>N°</th>
+        <th>Titre</th>
+        <th>Auteur</th>
+        <th>Document est-il emprunté ?</th>
+        <th>Emprunter</th>
+    </thead>
     <%
-        var list = '';
+        var table = '';
+        var titre = '';
+        var documentemprunte ;
+        var auteur = '';
+        var conteur = 0;
+        
         for (i = 0; i < alltitles.length; i++) {
-            var title = alltitles[i].fields['titre_avec_lien_vers_le_catalogue'];
-            list += '<li>' + title + '</li>';
+
+            conteur += 1;
+            titre = alltitles[i].fields['titre_avec_lien_vers_le_catalogue'];
+            documentemprunte = alltitles[i].fields['document_emprunte'];
+            // btnemprunte = alltitles[i].fields['rang'];
+            auteur = alltitles[i].fields['auteur'];
+
+            table += '<tr><td>' + conteur + '</td><td>' + titre + '</td><td>' + auteur + '</td><td>' + documentemprunte + '</td><td>' + '<button>Emprunter</button>' +'</td></tr>';
         }
     %>
-    <%- list %>
-</ul>
+    <%- table %>
+</table>
 </body>
 </html>
